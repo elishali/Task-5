@@ -11,8 +11,8 @@
             //Tapsiriq5();
             //Tapsiriq6();
             //Tapsiriq7();
-            Tapsiriq8();
-            //Tapsiriq9();
+            //Tapsiriq8();
+            Tapsiriq9();
             //Tapsiriq10();
             //Tapsiriq11();
             //Tapsiriq12();
@@ -64,6 +64,51 @@
                hem butun reqemleri eyni olsun,
                hem reqemleri cemi 5 den boyuk olsun
                hem reqemleri arasinda 5 reqemi olmasin */
+
+            int sumDigit;
+
+            for (int i = 1; i <= 100000; i++)
+
+            {
+                int newn = 0, m, q;
+                m = i;
+                while (m != 0)
+                {
+                    q = m % 10;
+                    newn = newn * 10 + q;
+                    m = m / 10;
+                }
+                if (i % 10 == 5)
+                {
+                    continue;
+                }
+                if ((i / 10) % 10 == 5)
+                {
+                    continue;
+                }
+                if ((i / 100) % 10 == 5)
+                {
+                    continue;
+                }
+                if ((i / 1000) % 10 == 5)
+                {
+                    continue;
+                }
+                if ((i / 10000) % 10 == 5)
+                {
+                    continue;
+                }
+                if (i / 100000 == 5)
+                {
+                    continue;
+                }
+                sumDigit = SumOf(i);
+
+                if (sumDigit > 5)
+                {
+                    Console.WriteLine(i);
+                }
+            }
         }
 
         private static void Tapsiriq11()
@@ -72,12 +117,54 @@
                hem polindrom olsun,
                hem ededin reqemleri daxilinde 3 olmasin
                hem ededin reqemleri cemi 10 dan boyuk olsun*/
+
+            int sumDigit;
+            for (int i = 1; i <= 1000; i++)
+
+            {
+                int newn = 0, m, q;
+                m = i;
+                while (m != 0)
+                {
+                    q = m % 10;
+                    newn = newn * 10 + q;
+                    m = m / 10;
+                }
+
+                if (newn == i && i % 10 != 3 && (i / 10) % 10 != 3 && i / 100 != 3)
+                {
+                    sumDigit = SumOf(i);
+
+                    if (sumDigit > 10)
+                    {
+                        Console.WriteLine(i);
+                    }
+                }
+
+            }
         }
 
         private static void Tapsiriq10()
         {
             /*1-1000 qeder CUT ederlerin icerisinde
              reqemleri cemi 5 ile 7 arasinda olan en boyuk eded hansidir?*/
+
+            int sumDigit;
+
+            for (int i = 1; i <= 1000; i++)
+            {
+
+                if (i / 2 == 0)
+                {
+                    continue;
+                }
+                sumDigit = SumOf(i);
+
+                if (sumDigit > 5 && sumDigit < 7)
+                {
+                    Console.WriteLine(i);
+                }
+            }
         }
 
         private static void Tapsiriq9()
@@ -86,14 +173,19 @@
             11-e bolunub reqemleri cemi 11-den boyuk olan 
             11-ci eded hansidir?*/
 
+            int sumDigit;
             for (int i = 1; i <= 1000; i++)
             {
-                if (i % 10 == 0)
+                if (i % 11 == 0)
                 {
-
+                    continue;
                 }
+                sumDigit = SumOf(i);
 
-                Console.WriteLine(i);
+                if (sumDigit > 11)
+                {
+                    Console.WriteLine(i);
+                }
             }
         }
 
