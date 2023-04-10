@@ -12,7 +12,7 @@
             //Tapsiriq6();
             //Tapsiriq7();
             //Tapsiriq8();
-            Tapsiriq9();
+            //Tapsiriq9();
             //Tapsiriq10();
             //Tapsiriq11();
             //Tapsiriq12();
@@ -33,12 +33,60 @@
             return sum;
         }
 
+        static bool IsPrime(int number)
+        {
+            if (number == 1)
+            {
+                return false;
+            }
+
+            for (int i = 2; i <= Math.Sqrt(number); i++)
+            {
+                if (number % i == 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        static bool ContainsAnyDigit(int number, int[] digits)
+        {
+            foreach (char c in number.ToString())
+            {
+                if (Array.IndexOf(digits, int.Parse(c.ToString())) >= 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        static bool ContainsSumOfDigits(int number, int sum)
+        {
+            int total = 0;
+            foreach (char c in number.ToString())
+            {
+                total += int.Parse(c.ToString());
+            }
+            return total == sum;
+        }
+
         private static void Tapsiriq15()
         {
             /* 1-10000 qeder ederlerin icerisinden  ele ededleri cap etki :
                hem sade eded olsun
                hem ededin ozunun daxilinde 0,1,5,7,9 reqemleri olmasin
                hem ededin reqemleri ceminde 2 reqemi olmasin*/
+
+            for (int i = 1; i <= 10000; i++)
+            {
+                if (IsPrime(i) && !ContainsAnyDigit(i, new[] { 0, 1, 5, 7, 9 }) && !ContainsSumOfDigits(i, 2))
+                {
+                    Console.WriteLine(i);
+                }
+            }
         }
 
         private static void Tapsiriq14()
@@ -48,6 +96,22 @@
               hem ededin ozunun daxilinde 2 dene yanashi gelen 1 reqemi olsun
               hem ededin reqemleri cemi 7- 15 arasinda olsun.
               hem ededin reqemlerinin daxilinde 6 reqemi olmasin*/
+
+            for (int i = 1; i <= 100000; i++)
+            {
+                if (i.ToString().Split('5').Length - 1 >= 2 && i.ToString().Contains("11") && !i.ToString().Contains("6"))
+                {
+                    int sam = 0;
+                    foreach (char c in i.ToString())
+                    {
+                        sam += int.Parse(c.ToString());
+                    }
+                    if (sam >= 7 && sam <= 15)
+                    {
+                        Console.WriteLine(i);
+                    }
+                }
+            }
         }
 
         private static void Tapsiriq13()
@@ -56,6 +120,36 @@
                hem butun reqemleri yalniz tek ededlerden ibaret olsun,
                polindrom olsun,
                daxilinde minimum 1 dene 5 reqemi olsun*/
+
+            for (int i = 1; i <= 100000; i++)
+            {
+                bool oddnumber = true;
+                foreach (char c in i.ToString())
+                {
+                    int number = int.Parse(c.ToString());
+                    if (number % 2 == 0)
+                    {
+                        oddnumber = false;
+                        break;
+                    }
+                }
+
+                if (oddnumber)
+                {
+                    string rev = "";
+                    foreach (char c in i.ToString())
+                    {
+                        rev = c.ToString() + rev;
+                    }
+                    if (i.ToString() == rev)
+                    {
+                        if (i.ToString().Contains("5"))
+                        {
+                            Console.WriteLine(i);
+                        }
+                    }
+                }
+            }
         }
 
         private static void Tapsiriq12()
